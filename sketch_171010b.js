@@ -1,49 +1,50 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(255, 255, 255);
+  frameRate(24);
 }
 function draw() {
   background(255, 255, 255);
-  randomSeed(0);
   
+  //randomSeed(millis());
+  randomSeed(0);
   strokeWeight(3);
   var x, y;
-  var deltaX = map(mouseX, 0, windowWidth, 10, 500);
-  var deltaY = map(mouseY, 0, windowHeight, 5, 20);
+  var delta = map(mouseX, 0, windowWidth, 10, 100);
+  //delta = 20;
   
-  for(var i = 0; i<deltaX; i++)
-  {
-    var r = random(0,1);
-    if(r<0.5)
-    {
-      var rX = random(0, windowWidth);
-      var rY = random(0, windowHeight);
-      line(rX, rY, rX+deltaX, rY+deltaX);
-      stroke(216, 81, 252);
-      strokeWeight(deltaY);
-    }
-    else
-    {
-      var rX = random(0, windowWidth);
-      var rY = random(0, windowHeight);
-      line(rX+deltaX, rY, rX, rY+deltaX);
-      stroke(0, 0, 0);
-      strokeWeight(3);
-    }
-  }
-  /*
-  for (y=0; y<windowHeight; y+=deltaX) {
-    for (x=0; x<windowWidth; x+=deltaX) {
+  for (y=0; y<windowHeight; y+=delta) {
+    for (x=0; x<windowWidth; x+=delta) {
       var r = random(0, 1);
       if (r < 0.5) {
-        line(x, y, x+deltaX, y+deltaX);
-        stroke(216, 81, 252);
-        strokeWeight(deltaY);
+        line(x, y, (x+delta)+r*10, (y+delta)+r*10);
       } else {
-        line(x+deltaX, y, x, y+deltaX);
-        stroke(0, 0, 0);
-        strokeWeight(3);
+        line((x+delta)+r*10, y, x, (y+delta)+r*10);
       }
+    }
+  }
+  
+  /*
+  for (y=0; y<windowHeight; y+=delta) {
+    for (x=0; x<windowWidth; x+=delta) {
+      var r = random(0, 2);
+      if (r < 0.25) {
+        line(x, y, x+delta, y);
+      } else if(r>=0.25&&r<0.5) {
+        line(x, y, x, y+delta);
+      } else if(r>=0.5&&r<0.75) {
+        line(x+delta, y, x, y);
+      } else if(r>=0.75&&r<1.0){
+        line(x, y+delta, x, y);
+      } else if (r>=1.0&&r<1.25) {
+        line(x, y, x-delta, y);
+      } else if(r>=1.25&&r<1.5) {
+        line(x, y, x, y-delta);
+      } else if(r>=1.5&&r<1.75) {
+        line(x-delta, y, x, y);
+      } else {
+        line(x, y-delta, x, y);
+      } 
     }
   }
   */
