@@ -55,11 +55,11 @@ function draw() {
 
 function keyPressed()
 {
-  if(keyCode == 'q')
+  if(key == '1')
   {
     mode = 0;
   }
-  else if(keyCode == 'w')
+  else if(key == '2')
   {
     mode = 1;
   }
