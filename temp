@@ -1,0 +1,24 @@
+//Font font;
+String original_text[];
+String modify_text[];
+
+void setup() {
+  size(900, 680 );
+  //font = loadFont("Zapfino-48.vlw");
+  //textFont(font);
+  background(0, 0, 0);
+  original_text = loadStrings("list.txt");
+  
+  modify_text = split(original_text[0], ' ');
+  
+  fill(#FFFFFF);
+  for (int y=0; y<modify_text.length; y++) {
+    textSize(random(10, 35));
+    text(modify_text[y], random(0, width), random(0, height));
+  }
+}  
+
+void draw() {
+  
+}
+
